@@ -4,12 +4,12 @@ import pytest
 
 from src.domain.requests import TransferCoinsRequest
 from src.domain.responses import ResponseType
-from src.domain.usecases.transfer_money import TransferCoinsUseCase
+from src.domain.usecases.transfer_coins import TransferCoinsUseCase
 from src.tests.conftest import build_user
 
 
 @pytest.mark.asyncio
-async def test_transfer_money_success(memory_user_uow):
+async def test_transfer_coins_success(memory_user_uow):
     sender = build_user()
     recipient = build_user(username="test2")
     memory_user_uow.user_repository.users.extend([sender, recipient])
@@ -33,7 +33,7 @@ async def test_transfer_money_success(memory_user_uow):
 
 
 @pytest.mark.asyncio
-async def test_transfer_money_invalid_sender(memory_user_uow):
+async def test_transfer_coins_invalid_sender(memory_user_uow):
     recipient = build_user(username="test2")
     memory_user_uow.user_repository.users.append(recipient)
 
@@ -54,7 +54,7 @@ async def test_transfer_money_invalid_sender(memory_user_uow):
 
 
 @pytest.mark.asyncio
-async def test_transfer_money_invalid_recipient(memory_user_uow):
+async def test_transfer_coins_invalid_recipient(memory_user_uow):
     sender = build_user()
     memory_user_uow.user_repository.users.append(sender)
 
@@ -75,7 +75,7 @@ async def test_transfer_money_invalid_recipient(memory_user_uow):
 
 
 @pytest.mark.asyncio
-async def test_transfer_money_not_enough_money(memory_user_uow):
+async def test_transfer_coins_not_enough_coins(memory_user_uow):
     sender = build_user()
     recipient = build_user(username="test2")
     memory_user_uow.user_repository.users.extend([sender, recipient])
@@ -92,5 +92,5 @@ async def test_transfer_money_not_enough_money(memory_user_uow):
     response = await usecase.execute(request)
 
     assert response.type == ResponseType.INVALID_PARAMETERS
-    assert response.message == "Not enough money"
+    assert response.message == "Not enough coins"
     assert len(memory_user_uow.user_repository.transactions) == 0

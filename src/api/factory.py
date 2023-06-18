@@ -1,4 +1,4 @@
-from src.domain.usecases.transfer_money import TransferCoinsUseCase
+from src.domain.usecases.transfer_coins import TransferCoinsUseCase
 from src.domain.usecases.user_login import UserLoginUseCase
 from src.domain.usecases.user_register import UserRegisterUseCase
 from src.infra.repository import SQLAlchemyUserUnitOfWork

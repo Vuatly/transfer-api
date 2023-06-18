@@ -36,7 +36,7 @@ class TransferCoinsUseCase:
 
             if from_user.coins < data.coins:
                 return TransferCoinsResponse(
-                    message="Not enough money",
+                    message="Not enough coins",
                     type=ResponseType.INVALID_PARAMETERS,
                 )
 

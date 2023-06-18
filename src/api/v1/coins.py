@@ -7,11 +7,11 @@ from starlette.responses import JSONResponse
 from src.api import queries, factory
 from src.api.codes import STATUS_CODES
 from src.domain.requests import TransferCoinsRequest
-from src.domain.usecases.transfer_money import TransferCoinsUseCase
+from src.domain.usecases.transfer_coins import TransferCoinsUseCase
 from src.pkg import security
 from src.pkg.security import JWTPayload
 
-router = APIRouter(prefix="/coins", tags=["money"])
+router = APIRouter(prefix="/coins", tags=["coins"])
 
 
 class TransferCoins(BaseModel):
