@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "transfer-api"
+version = "0.1.0"
+description = ""
+authors = ["kirill"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.97.0"
+uvicorn = "^0.22.0"
+loguru = "^0.7.0"
+passlib = {extras = ["bcrypt"], version = "^1.7.4"}
+sqlalchemy = "^2.0.16"
+alembic = "^1.11.1"
+asyncpg = "^0.27.0"
+python-jose = {extras = ["cryptography"], version = "^3.3.0"}
+pytest = "^7.3.2"
+pytest-asyncio = "^0.21.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.3.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
