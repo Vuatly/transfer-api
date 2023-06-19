@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 from fastapi.responses import JSONResponse
 from loguru import logger
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from sqlalchemy.exc import IntegrityError
 
 from src.api import factory
@@ -14,12 +14,12 @@ router = APIRouter(prefix="/users", tags=["users"])
 
 
 class UserRegister(BaseModel):
-    username: str
+    username: str = Field(..., min_length=4, max_length=32)
     password: str
 
 
 class UserLogin(BaseModel):
-    username: str
+    username: str = Field(..., min_length=4, max_length=32)
     password: str
 
 

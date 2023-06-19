@@ -15,7 +15,12 @@ router = APIRouter(prefix="/coins", tags=["coins"])
 
 
 class TransferCoins(BaseModel):
-    recipient_username: str = Field(..., description="Username of recipient")
+    recipient_username: str = Field(
+        ...,
+        min_length=4,
+        max_length=32,
+        description="Username of recipient"
+    )
     coins: int = Field(
         ...,
         ge=1,
